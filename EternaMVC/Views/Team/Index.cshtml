@@ -1,0 +1,46 @@
+﻿@model List<Team>
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+
+            <ol>
+                <li><a href="index.html">Home</a></li>
+                <li>Team</li>
+            </ol>
+            <h2>Team</h2>
+
+        </div>
+    </section><!-- End Breadcrumbs -->
+    <!-- ======= Team Section ======= -->
+    <section id="team" class="team">
+        <div class="container">
+
+            <div class="row">
+                @foreach (Team team in Model)
+                {
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                        <div class="member">
+                            <img src="assets/img/team/@team.ImgUrl" alt="">
+                            <h4>@team.FullName</h4>
+                            <span>@team.Position</span>
+                            <p>
+                                @team.About
+                            </p>
+
+                             <div class="social">
+                       @foreach (TeamSocialMediaAccount item in team.TeamSocialMediaAccounts)
+                       {
+                            <a href="@item.RedirectUrl" target="_blank">@Html.Raw(item.Icon)</a>
+                       }
+                        </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+        </div>
+    </section><!-- End Team Section -->
+
+</main><!-- End #main -->
